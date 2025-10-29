@@ -13,11 +13,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # SonarQube Scan
+      # Run SonarQube scan
       - name: SonarQube Scan
         uses: sonarsource/sonarqube-scan-action@v2
         with:
           projectBaseDir: .
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+      # Enforce Quality Gate (fail pipeline if not passed)
+      - name: Wait for SonarQube Quality Gate
+        uses: sonarsource/sonarqube-quality-gate-action@v1
+        timeout-minutes: 10
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
