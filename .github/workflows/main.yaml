@@ -16,25 +16,25 @@ jobs:
       - name: Log in to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ DOCKER_HUB_USERNAME }}
-          password: ${{ DOCKER_HUB_ACCESS_TOKEN }}
+          username: ${{ secrets.DOCKER_HUB_USERNAME }}
+          password: ${{ secrets.DOCKER_HUB_ACCESS_TOKEN }}
 
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v6
         with:
           context: .
           push: true
-          tags: ${{ DOCKER_HUB_USERNAME }}/hotstar-clone:latest
+          tags: ${{ secrets.DOCKER_HUB_USERNAME }}/hotstar-clone:latest
 
       - name: Deploy to Remote Server via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ SSH_REMOTE_HOST }}
-          username: ${{ SSH_REMOTE_USER }}
-          key: ${{ REMOTE_SSH_KEY }}
-          port: ${{ SSH_REMOTE_PORT }}
+          host: ${{ secrets.SSH_REMOTE_HOST }}
+          username: ${{ secrets.SSH_REMOTE_USER }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          port: ${{ secrets.SSH_REMOTE_PORT }}
           script: |
-            docker pull ${{ DOCKER_HUB_USERNAME }}/hotstar-clone:latest
+            docker pull ${{ secrets.DOCKER_HUB_USERNAME }}/hotstar-clone:latest
             docker stop hotstar-clone || true
             docker rm hotstar-clone || true
-            docker run -d -p 3000:80 --name hotstar-clone ${{ DOCKER_HUB_USERNAME }}/hotstar-clone:latest
+            docker run -d -p 3000:80 --name hotstar-clone ${{ secrets.DOCKER_HUB_USERNAME }}/hotstar-clone:latest
