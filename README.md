@@ -51,7 +51,7 @@ resource "aws_instance" "devsecops_ec2" {
   tags = {
     Name = "DevSecOps-EC2"
   }
-}
+} 
 2️⃣ Commands
 bash
 Copy code
@@ -190,8 +190,3 @@ Add Nginx as reverse proxy
 🔗 Live Server: http://<EC2-Public-IP>:3000
 🔗 Documentation: Available in Word format
 
-👨‍💻 Author
-Bharani S
-MBA Fresher | Aspiring DevOps Engineer | AWS Cloud & CI/CD Enthusiast
-📧 [Your Email Here]
-🔗 [LinkedIn Profile URL
