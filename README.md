@@ -185,6 +185,37 @@ Manage secrets with HashiCorp Vault
 
 Add Nginx as reverse proxy
 
+## 🚀 Cloudflare Pages Deployment
+
+### Prerequisites
+- Cloudflare account
+- GitHub repository connected to Cloudflare
+- API key set in environment variables
+
+### Setup Environment Variables
+1. Create a `.env` file locally (not committed):
+```bash
+REACT_APP_TMDB_API_KEY=your_tmdb_api_key_here
+```
+
+2. In Cloudflare Pages project settings, add these environment variables:
+   - `REACT_APP_TMDB_API_KEY`: Your TMDB API key
+   - `NODE_VERSION`: 18
+   - `NODE_ENV`: production
+
+### Build Configuration
+- **Build command**: `npm run build`
+- **Build output directory**: `build`
+- **Root directory**: `/`
+
+### Deployment Steps
+1. Push your code to GitHub
+2. Connect your GitHub repo to Cloudflare Pages
+3. Cloudflare will automatically:
+   - Run `npm install`
+   - Run `npm run build`
+   - Deploy the `build` folder
+
 🌐 Links
 🔗 GitHub Repository: Hotstar Clone
 🔗 Live Server: http://<EC2-Public-IP>:3000
