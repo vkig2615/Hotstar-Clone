@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react'
 import './Footer.css'
 
@@ -7,27 +8,21 @@ function Footer() {
         <div className='footer'>
             <div>
                 <h3>Company</h3>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#"><h4>About us</h4></a>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#"><h4>Careers</h4></a>
                 <p style={{marginTop:"20px"}}>&copy;2023 STAR . All rights reserved</p>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#"><p>Terms of Use &nbsp; Privacy  Policy &nbsp; FAQ </p></a>
             </div>
 
             <div>
                 <h3>View website in</h3>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#"><h4>English</h4></a>
                 
             </div>
 
             <div>
                 <h3>Need help ?</h3>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#"><h4>Visit Help center</h4></a>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
                 <a href="#"><h4>Share feedback</h4></a>
                
             </div>
